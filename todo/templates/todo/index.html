@@ -1,0 +1,16 @@
+
+<h1>TODO</h1>
+
+{% if error_msg %}<p><strong>{{ error_msg }}</strong></p>{% endif %}
+
+<form action="{% url 'todo:parse_input' %}" method="post">
+  {% csrf_token %}
+  <input type="text" name="input" id="input">
+  <input type="submit" value="Send">
+</form>
+
+<ul>
+{% for todo in todos %}
+  <li>{{ todo.todo_title }}</li>
+{% endfor %}
+</ul>
